@@ -7,7 +7,7 @@ sudo apt update && sudo apt upgrade -y
 
 # Install essential programs
 echo "Installing essential programs..."
-ESSENTIAL_PROGRAMS=("curl" "wget" "vim" "htop" "nvme-cli" "fio" "stress" "php" "unzip" "python3-pip" "s-tui")
+ESSENTIAL_PROGRAMS=("curl" "wget" "vim" "htop" "nvme-cli" "fio" "stress" "php" "unzip" "python3-pip" "s-tui" "linux-tools-common" "linux-tools-generic")
 for program in "${ESSENTIAL_PROGRAMS[@]}"; do
     sudo apt install -y "$program"
 done
