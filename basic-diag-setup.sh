@@ -26,6 +26,7 @@ echo "Configuring SSH for root login with a password..."
 SSH_CONFIG_FILE="/etc/ssh/sshd_config"
 sudo sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin yes/' "$SSH_CONFIG_FILE"
 sudo sed -i 's/^#PasswordAuthentication no/PasswordAuthentication yes/' "$SSH_CONFIG_FILE"
+sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' "$SSH_CONFIG_FILE"
 sudo systemctl restart ssh
 
 # Set root password
@@ -37,13 +38,10 @@ sudo passwd root
 echo "SSH service status:"
 sudo systemctl status ssh
 
-# Energy saving options disable 
-# to do
-#
-#
-#
+echo "Disabling plasma-powerdevil.service"
+systemctl --user stop plasma-powerdevil.service
 
-echo -e " \n Skrypt wykonany. Przed skorzystaniem z ssh nie zapomnij wyłączyć oszczędzania energi w ustawieniach Kubudubu :D"
+echo -e "\nSkrypt wykonany.  :D"
 
 
 for i in {1..2}; do
