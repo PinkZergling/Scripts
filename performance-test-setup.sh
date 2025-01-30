@@ -32,6 +32,7 @@ echo "Configuring SSH for root login with a password..."
 SSH_CONFIG_FILE="/etc/ssh/sshd_config"
 sudo sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin yes/' "$SSH_CONFIG_FILE"
 sudo sed -i 's/^#PasswordAuthentication no/PasswordAuthentication yes/' "$SSH_CONFIG_FILE"
+sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' "$SSH_CONFIG_FILE"
 sudo systemctl restart ssh
 
 # Set root password
