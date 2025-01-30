@@ -44,7 +44,12 @@ sudo passwd root
 echo "SSH service status:"
 sudo systemctl status ssh
 
-echo -e "\nSkrypt wykonany. Przed skorzystaniem z ssh nie zapomnij wyłączyć oszczędzania energi w ustawieniach Kubudubu :D"
+echo "Disabling plasma-powerdevil.service"
+systemctl --user stop plasma-powerdevil.service
+
+echo -e "\nSkrypt wykonany.  :D"
+
+
 
 for i in {1..2}; do
     echo
