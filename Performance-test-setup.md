@@ -8,18 +8,35 @@
 - stress
 - php
 - unzip
-- phoronix-test-suite - folder w /home/phoronix-test-suite-master (niezainstalowany)
-# Passmark ./pt_linux_x64
+- python3
+- s-tui
+- phoronix-test-suite - phoronix-test-suite
+- pt_linux_x64 - pt_linux_x64
+- IPMICFG_1.35.1_build.230912 - ipmicfg
+- storcli
+- ssh
+
+# Passmark - pt_linux_x64
 https://www.passmark.com/products/pt_linux/download.php
 
-# Additional Performance Tests:    
-pts/build-linux-kernel    
-pts/c-ray    
-pts/compress-7zip    
-pts/gromacs-1.8.0    
-pts/namd-1.2.1
+# Additional Performance Tests:
+_pts installations always force downloading dependencies_    
 
-# Additional Storcli packets:
+phoronix-test-suite run build-linux-kernel     
+phoronix-test-suite run c-ray    
+phoronix-test-suite run compress-7zip    
+phoronix-test-suite run gromacs-1.8.0    
+phoronix-test-suite run namd-1.2.1
+
+# Dysk
+##     fio - flexible I/O tester:
+        Kolejno: Sequential READ; Sequential WRITE; Random READ; Random READ-WRITE
+        fio --name read --eta-newline=5s --rw=read --size=500m --io_size=10g --blocksize=1024k --ioengine=libaio --fsync=10000 --iodepth=32 --direct=1 --numjobs=1 --runtime=60 --group_reporting filename=/dev/nvme0n1
+        fio --name write --eta-newline=5s --rw=write --size=500m --io_size=10g --blocksize=1024k --ioengine=libaio --fsync=10000 --iodepth=32 --direct=1 --numjobs=1 --runtime=60 --group_reporting filename=/dev/nvme0n1
+        fio --name random-write --eta-newline=5s --rw=randread --size=500m --io_size=10g --blocksize=4k --ioengine=libaio --fsync=1 --iodepth=1 --direct=1 --numjobs=1 --runtime=60 --group_reporting filename=/dev/nvme0n1
+        fio --name random-read --eta-newline=5s --rw=randrw --size=500m --io_size=10g --blocksize=4k --ioengine=libaio --fsync=1 --iodepth=1 --direct=1 --numjobs=1 --runtime=60 --group_reporting filename=/dev/nvme0n1
+
+## Additional Storcli packets:
 008.0011.0000.0014_Storcli2
 Broadcom Limited Avenger MR 8.11 Storcli2
 *******************************************
