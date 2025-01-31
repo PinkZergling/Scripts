@@ -1,0 +1,17 @@
+Simple script for downloading basic, diagnostic and test programs:
+- curl
+- wget 
+- vim
+- htop
+- nvme-cli
+- fio
+- stress
+- php
+- unzip
+- python3
+- s-tui
+- phoronix-test-suite 
+- pt_linux_x64 
+- ipmicfg
+- storcli
+- ssh
