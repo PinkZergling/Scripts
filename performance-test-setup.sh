@@ -64,6 +64,7 @@ sudo systemctl status ssh
 
 echo "Disabling plasma-powerdevil.service"
 systemctl --user stop plasma-powerdevil.service
+systemctl --user mask plasma-powerdevil.service
 
 echo -e "\nScript execution completed! 😃"
 
