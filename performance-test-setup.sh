@@ -10,7 +10,7 @@ sudo apt update && sudo apt upgrade -y
 
 # Install essential programs
 echo "Installing essential programs..."
-ESSENTIAL_PROGRAMS=("curl" "wget" "vim" "htop" "nvme-cli" "fio" "stress" "php" "php-gd" "php-dom" "php-simplexml" "unzip" "python3-pip" "s-tui" "linux-tools-common" "linux-tools-generic" "libncurses5" "bzip2" )
+ESSENTIAL_PROGRAMS=("curl" "wget" "vim" "htop" "nvme-cli" "fio" "stress" "php" "php-gd" "php-dom" "php-simplexml" "unzip" "python3-pip" "s-tui" "linux-tools-common" "linux-tools-generic" "libncurses5" "bzip2" "openssh-server" )
 for program in "${ESSENTIAL_PROGRAMS[@]}"; do
     sudo apt install -y "$program"
 done
@@ -42,10 +42,8 @@ sudo dpkg -i /home/storcli/Unified_storcli_all_os/Ubuntu/storcli_007.3103.0000.0
 sudo ln -s /opt/MegaRAID/storcli/storcli64 /usr/bin/storcli
 
 # Install and enable SSH
-echo "Installing and enabling SSH..."
-sudo apt install -y openssh-server
-sudo systemctl enable ssh
-sudo systemctl start ssh
+echo "Configuring SSH..."
+sudo systemctl enable --now ssh
 
 # Allow root login via SSH (with a password)
 echo "Configuring SSH for root login with a password..."
@@ -53,7 +51,7 @@ SSH_CONFIG_FILE="/etc/ssh/sshd_config"
 sudo sed -i 's/^#PermitRootLogin prohibit-password/PermitRootLogin yes/' "$SSH_CONFIG_FILE"
 sudo sed -i 's/^#PasswordAuthentication no/PasswordAuthentication yes/' "$SSH_CONFIG_FILE"
 sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' "$SSH_CONFIG_FILE"
-sudo systemctl restart ssh
+sudo sshd -t && sudo systemctl restart ssh
 
 # Set root password
 echo "Setting root password..."
@@ -67,7 +65,7 @@ sudo systemctl status ssh
 echo "Disabling plasma-powerdevil.service"
 systemctl --user stop plasma-powerdevil.service
 
-echo -e "\nSkrypt wykonany.  :D"
+echo -e "\nScript execution completed! 😃"
 
 
 
