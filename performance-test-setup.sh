@@ -53,6 +53,11 @@ sudo sed -i 's/^#PasswordAuthentication no/PasswordAuthentication yes/' "$SSH_CO
 sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication yes/' "$SSH_CONFIG_FILE"
 sudo sshd -t && sudo systemctl restart ssh
 
+
+echo "Disabling plasma-powerdevil.service"
+systemctl --user stop plasma-powerdevil.service
+systemctl --user mask plasma-powerdevil.service
+
 # Set root password
 echo "Setting root password..."
 echo "Enter the new password for root:"
@@ -62,9 +67,6 @@ sudo passwd root
 echo "SSH service status:"
 sudo systemctl status ssh
 
-echo "Disabling plasma-powerdevil.service"
-systemctl --user stop plasma-powerdevil.service
-systemctl --user mask plasma-powerdevil.service
 
 echo -e "\nScript execution completed! 😃"
 
