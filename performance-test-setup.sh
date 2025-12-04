@@ -22,7 +22,7 @@ sudo ./install.sh
 cd /home
 
 # Passmark
-sudo wget -P /home https://www.passmark.com/downloads/pt_linux_x64.zip
+sudo wget -P /home https://www.passmark.com/downloads/PerformanceTest_Linux_x86-64.zip
 sudo mkdir /home/pt_linux && sudo unzip /home/pt_linux_x64.zip -d /home/pt_linux
 sudo chmod +x /home/pt_linux/PerformanceTest/pt_linux_x64
 sudo ln -s /home/pt_linux/PerformanceTest/pt_linux_x64 /usr/local/bin/pt_linux_x64
